@@ -14,9 +14,6 @@ use PhpParser\Node\Stmt\GroupUse;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
