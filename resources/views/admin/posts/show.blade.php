@@ -10,7 +10,7 @@
             <p>{{ $post->content }}</p>
 
             <div classs="my-5">
-                <a href="{{-- {{ route("admin.posts.edit") }} --}}" class="btn btn-success my-2">modifica post</a><br>
+                <a href="{{ route("admin.posts.edit", $post->id) }}" class="btn btn-success my-2">modifica post</a><br>
                 <form action="{{ route("admin.posts.destroy", $post->id) }}" method="post">
                     @csrf
                     @method("DELETE")
