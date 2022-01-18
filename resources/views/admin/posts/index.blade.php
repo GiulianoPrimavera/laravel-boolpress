@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
+
 @section('content')
 <div class="container">
+    <div class="text-center">
+        <a href="{{ route("admin.posts.create") }}" class="btn btn-success my-3">Crea nuovo post</a>
+    </div>
     <div class="row justify-content-center">
         
         <div>
