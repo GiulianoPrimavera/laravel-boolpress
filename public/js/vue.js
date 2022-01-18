@@ -1922,13 +1922,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "App",
   components: {},
   data: function data() {
     return {
-      helloMsg: "Ce la faremo?",
+      helloMsg: "pagina geusts dei post",
       postList: []
     };
   },
@@ -2427,17 +2432,22 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h1", [_vm._v(_vm._s(_vm.helloMsg))]),
+    _c("h1", [_vm._v("\n        " + _vm._s(_vm.helloMsg) + "\n    ")]),
     _vm._v(" "),
-    _c(
-      "ul",
-      _vm._l(_vm.postList, function (post, i) {
-        return _c("li", { key: i }, [
-          _vm._v("\n            " + _vm._s(post["title"]) + "\n        "),
-        ])
-      }),
-      0
-    ),
+    _c("div", { staticClass: "container text-center my-5" }, [
+      _c(
+        "ul",
+        { staticClass: "list-group" },
+        _vm._l(_vm.postList, function (post, i) {
+          return _c("li", { key: i, staticClass: "list-group-item" }, [
+            _vm._v(
+              "\n                " + _vm._s(post["title"]) + "\n            "
+            ),
+          ])
+        }),
+        0
+      ),
+    ]),
   ])
 }
 var staticRenderFns = []

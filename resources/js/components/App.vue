@@ -1,12 +1,17 @@
 <template>
     <div>
-        <h1>{{helloMsg}}</h1>
+        <h1>
+            {{ helloMsg }}
+        </h1>
+        <div class="container text-center my-5">
+            
+            <ul class="list-group">
+                <li class="list-group-item" v-for="(post, i) in postList" :key="i">
+                    {{ post["title"] }}
+                </li>
+            </ul>
         
-        <ul>
-            <li v-for="(post, i) in postList" :key="i">
-                {{ post["title"] }}
-            </li>
-        </ul>
+        </div>
     </div>
 </template>
 
@@ -18,7 +23,7 @@ export default {
     components: {},
     data() {
         return {
-            helloMsg: "Ce la faremo?",
+            helloMsg: "pagina geusts dei post",
             postList: []
         }
     },
