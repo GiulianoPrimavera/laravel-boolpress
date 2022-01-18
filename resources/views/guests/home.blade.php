@@ -21,7 +21,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    {{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'Laravel') }}
@@ -39,7 +39,7 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
-                    @guest
+                    {{-- @guest
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
@@ -66,11 +66,13 @@
                                 </form>
                             </div>
                         </li>
-                    @endguest
+                    @endguest --}}
+
+                    <a href="{{ route("admin.home") }}" class="btn btn-primary">vai alla sezione admin</a>
                 </ul>
             </div>
         </div>
-    </nav> --}}
+    </nav>
     <div id="root"></div>
 
 </body>
