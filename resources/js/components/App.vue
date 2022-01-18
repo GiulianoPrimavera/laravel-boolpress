@@ -1,6 +1,12 @@
 <template>
     <div>
         <h1>{{helloMsg}}</h1>
+        
+        <ul>
+            <li v-for="(post, i) in postList" :key="i">
+                {{ post["title"] }}
+            </li>
+        </ul>
     </div>
 </template>
 
