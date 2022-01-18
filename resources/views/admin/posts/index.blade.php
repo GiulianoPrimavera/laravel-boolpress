@@ -7,7 +7,7 @@
         <div>
             <ul class="list-group">
                 @foreach ($postsData as $singlePost)
-                    <li class="list-group-item">{{ $singlePost->title }} {{ $singlePost->content }}</li>
+                    <li class="list-group-item"><a href="{{ route("admin.posts.show", $singlePost->id) }}">{{ $singlePost->title }}</a><br>  {{ $singlePost->content }}</li>
                 @endforeach
             </ul>
 
