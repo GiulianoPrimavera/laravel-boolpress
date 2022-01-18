@@ -16,6 +16,11 @@
 
                     {{ __('You are logged in!') }}
                 </div>
+                <div class="card-body d-flex align-items-center justify-content-between">
+                    <span>Click to see the posts</span>
+
+                    <a href="{{ url("admin/posts") }}" class="btn btn-primary">Posts</a>
+                </div>
             </div>
         </div>
     </div>
