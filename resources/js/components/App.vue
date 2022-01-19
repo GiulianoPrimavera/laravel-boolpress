@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>
+       <!--  <h1>
             {{ helloMsg }}
         </h1>
         <div class="container text-center my-5">
@@ -11,16 +11,20 @@
                 </li>
             </ul>
         
-        </div>
+        </div> -->
+       <Home></Home> 
     </div>
 </template>
 
 <script>
 import axios from "axios";
+import Home from "./Home.vue";
 
 export default {
     name: "App",
-    components: {},
+    components: { 
+        Home
+        },
     data() {
         return {
             helloMsg: "pagina geusts dei post",
