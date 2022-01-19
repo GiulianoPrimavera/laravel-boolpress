@@ -2,6 +2,16 @@
 
 @section('content')
     <div class="container">
+        <div>
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    <div class="alert alert-danger" role="alert">
+                        {{ $error }}<br>
+                    </div>
+                @endforeach
+            @endif 
+            
+        </div>
 
         <form action="{{ route("admin.posts.store") }}" method="post">
             @csrf
