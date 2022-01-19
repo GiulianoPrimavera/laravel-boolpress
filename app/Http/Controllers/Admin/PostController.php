@@ -37,6 +37,11 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            "title" => "required|min:5",
+            "content" => "required|min:5"
+        ]);
+        
         $data = $request->all();
 
         $newPost = new Post();
@@ -44,7 +49,7 @@ class PostController extends Controller
         $newPost->fill($data);
         $newPost->save();
 
-        return redirect()->route("admin.posts.index");
+        return redirect()->route("admin.posts.index")->with("msg", "post creato correttamente");
     }
 
     /**
@@ -78,12 +83,17 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        $request->validate([
+            "title" => "required|min:5",
+            "content" => "required|min:5"
+        ]);
+
         $updatedData = $request->all();
 
         $post->update($updatedData);
         $post->save();
 
-        return redirect()->route("admin.posts.show", compact("post"));
+        return redirect()->route("admin.posts.show", compact("post"))->with("msg", "post modificato correttamente");
     }
 
     /**
