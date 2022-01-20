@@ -17,6 +17,15 @@
             <input type="text" id="content" class="form-control" name="content" value="{{ $post->content }}">
         </div>
 
+        <div class="form-group">
+            <label for="category">Categoria</label>
+            <select name="category_id" class="form-control">
+                @foreach ($categories as $category)
+                <option value="{{ $category->id }}">{{ $category->category }}</option>
+                @endforeach
+            </select>
+        </div>
+
         <button class="btn btn-success" type="submit">Modifica</button>
     </form>
 

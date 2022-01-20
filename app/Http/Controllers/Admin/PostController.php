@@ -76,7 +76,11 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view("admin.posts.edit", compact("post"));
+        $categories = Category::all();
+        return view("admin.posts.edit", [
+            "post" => $post,
+            "categories" => $categories
+        ]);
     }
 
     /**
@@ -96,6 +100,7 @@ class PostController extends Controller
         $updatedData = $request->all();
 
         $post->update($updatedData);
+        $post->category_id = $updatedData["category_id"];
         $post->save();
 
         return redirect()->route("admin.posts.show", compact("post"))->with("msg", "post modificato correttamente");
