@@ -6,6 +6,8 @@
         :title="singlePost.title"
         :content="singlePost.content"
         ></SinglePost> 
+        {{ postList }}
+        {{ categoriesList }}
     </div>
 </template>
 
@@ -21,12 +23,15 @@ export default {
     data() {
         return {
             helloMsg: "pagina geusts dei post",
-            postList: []
+            postList: [],
+            categoriesList: []
         }
     },
     mounted() {
         axios.get("/api/posts").then( (resp) => {
-            this.postList = resp.data;
+            this.postList = resp.data.allPosts
+            this.categoriesList = resp.data.categoriesList
+            /* console.log(resp.data); */
         })
     }
 }

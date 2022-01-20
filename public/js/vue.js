@@ -1922,6 +1922,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1932,14 +1934,17 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       helloMsg: "pagina geusts dei post",
-      postList: []
+      postList: [],
+      categoriesList: []
     };
   },
   mounted: function mounted() {
     var _this = this;
 
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/posts").then(function (resp) {
-      _this.postList = resp.data;
+      _this.postList = resp.data.allPosts;
+      _this.categoriesList = resp.data.categoriesList;
+      /* console.log(resp.data); */
     });
   }
 });
@@ -2459,14 +2464,23 @@ var render = function () {
   return _c(
     "div",
     { staticClass: "container text-center" },
-    _vm._l(_vm.postList, function (singlePost, i) {
-      return _c("SinglePost", {
-        key: i,
-        staticClass: "my-5",
-        attrs: { title: singlePost.title, content: singlePost.content },
-      })
-    }),
-    1
+    [
+      _vm._l(_vm.postList, function (singlePost, i) {
+        return _c("SinglePost", {
+          key: i,
+          staticClass: "my-5",
+          attrs: { title: singlePost.title, content: singlePost.content },
+        })
+      }),
+      _vm._v(
+        " \n    " +
+          _vm._s(_vm.postList) +
+          "\n    " +
+          _vm._s(_vm.categoriesList) +
+          "\n"
+      ),
+    ],
+    2
   )
 }
 var staticRenderFns = []
