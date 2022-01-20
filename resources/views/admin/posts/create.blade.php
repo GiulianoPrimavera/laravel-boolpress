@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container">
+        {{-- show errors --}}
         <div>
             @if ($errors->any())
                 @foreach ($errors->all() as $error)
@@ -26,7 +27,16 @@
                 <input type="text" id="content" class="form-control" name="content">
             </div>
 
-            <button class="btn btn-success" type="submit">Crea</button>
+            <div class="form-group">
+                <label for="category">Categoria</label>
+                <select name="category_id" class="form-control">
+                    @foreach ($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->category }}</option>
+                    @endforeach
+                </select>
+            </div>
+            
+            <button class="btn btn-success mt-4" type="submit">Crea</button>
         </form>
 
     </div>
