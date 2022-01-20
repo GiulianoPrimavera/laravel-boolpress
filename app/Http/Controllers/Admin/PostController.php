@@ -77,9 +77,11 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $categories = Category::all();
+        $category_id = $post->category_id;
         return view("admin.posts.edit", [
             "post" => $post,
-            "categories" => $categories
+            "categories" => $categories,
+            "this_post_category" => $category_id
         ]);
     }
 
