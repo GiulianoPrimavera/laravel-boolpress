@@ -1,29 +1,22 @@
 <template>
-    <div>
-       <!--  <h1>
-            {{ helloMsg }}
-        </h1>
-        <div class="container text-center my-5">
-            
-            <ul class="list-group">
-                <li class="list-group-item" v-for="(post, i) in postList" :key="i">
-                    {{ post["title"] }}
-                </li>
-            </ul>
-        
-        </div> -->
-       <Home></Home> 
+    <div class="container text-center">
+        <SinglePost class="my-5"
+        v-for="singlePost, i in postList" 
+        :key="i"
+        :title="singlePost.title"
+        :content="singlePost.content"
+        ></SinglePost> 
     </div>
 </template>
 
 <script>
 import axios from "axios";
-import Home from "./Home.vue";
+import SinglePost from "./SinglePost.vue";
 
 export default {
     name: "App",
     components: { 
-        Home
+        SinglePost
         },
     data() {
         return {
