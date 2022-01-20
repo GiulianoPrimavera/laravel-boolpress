@@ -8,7 +8,7 @@
         <div class="alert alert-success">{{session("msg")}}</div>
     @endif
 
-    <div class="row justify-content-center">
+    <div class="card justify-content-center">
         
         <div class="text-center">
             <a href="{{ route("admin.posts.create") }}" class="btn btn-success my-3">Crea nuovo post</a>
@@ -19,9 +19,9 @@
                 @endforeach
             </ul>
 
-            <a href="{{ route("admin.home") }}" class="btn btn-primary mt-5">torna alla home</a>
         </div>
         
     </div>
+    <a href="{{ route("admin.home") }}" class="btn btn-primary mt-5">torna alla home</a>
 </div>
 @endsection
