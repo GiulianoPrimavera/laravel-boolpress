@@ -1942,9 +1942,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/posts").then(function (resp) {
-      _this.postList = resp.data.allPosts;
-      _this.categoriesList = resp.data.categoriesList;
-      /* console.log(resp.data); */
+      _this.postList = resp.data;
     });
   }
 });
@@ -1968,11 +1966,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "SinglePost",
   props: {
     title: String,
-    content: String
+    content: String,
+    category: Array
   }
 });
 
@@ -2464,23 +2466,18 @@ var render = function () {
   return _c(
     "div",
     { staticClass: "container text-center" },
-    [
-      _vm._l(_vm.postList, function (singlePost, i) {
-        return _c("SinglePost", {
-          key: i,
-          staticClass: "my-5",
-          attrs: { title: singlePost.title, content: singlePost.content },
-        })
-      }),
-      _vm._v(
-        " \n    " +
-          _vm._s(_vm.postList) +
-          "\n    " +
-          _vm._s(_vm.categoriesList) +
-          "\n"
-      ),
-    ],
-    2
+    _vm._l(_vm.postList, function (singlePost, i) {
+      return _c("SinglePost", {
+        key: i,
+        staticClass: "my-5",
+        attrs: {
+          title: singlePost.title,
+          content: singlePost.content,
+          category: singlePost.category,
+        },
+      })
+    }),
+    1
   )
 }
 var staticRenderFns = []
@@ -2509,6 +2506,8 @@ var render = function () {
     _c("h3", [_vm._v(_vm._s(_vm.title))]),
     _vm._v(" "),
     _c("p", [_vm._v(_vm._s(_vm.content))]),
+    _vm._v(" "),
+    _c("p", { staticClass: "small" }, [_vm._v(_vm._s(_vm.category["name"]))]),
   ])
 }
 var staticRenderFns = []

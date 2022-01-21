@@ -5,9 +5,9 @@
         :key="i"
         :title="singlePost.title"
         :content="singlePost.content"
+        :category="singlePost.category"
         ></SinglePost> 
-        {{ postList }}
-        {{ categoriesList }}
+        <!-- {{ postList[0]["category"]["name"] }} -->
     </div>
 </template>
 
@@ -29,9 +29,7 @@ export default {
     },
     mounted() {
         axios.get("/api/posts").then( (resp) => {
-            this.postList = resp.data.allPosts
-            this.categoriesList = resp.data.categoriesList
-            /* console.log(resp.data); */
+            this.postList = resp.data
         })
     }
 }
