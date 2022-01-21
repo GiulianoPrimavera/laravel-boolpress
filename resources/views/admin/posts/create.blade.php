@@ -38,7 +38,7 @@
 
             <div class="form-check">
                 @foreach ($tags as $tag)    
-                <input class="form-check-input" type="checkbox" name="tag[]" id="tag" value="{{ $tag->id }}">
+                <input class="form-check-input" type="checkbox" name="tags[]" id="tag" value="{{ $tag->id }}">
                 <label class="form-check-label" for="tag">
                     {{ $tag->name }}
                 </label>
