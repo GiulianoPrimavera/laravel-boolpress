@@ -9,8 +9,9 @@ class PostController extends Controller
 {
     public function index(){
 
-        $allPosts = Post::all();
-        $categories = Category::all();
-        return (["allPosts" => $allPosts, "categories" => $categories]);
+        $allPosts = Post::with("category")->with("user")->get();
+        // $categories = Category::all();
+        // return (["allPosts" => $allPosts, "categories" => $categories]);
+        return ($allPosts);
     }
 }
