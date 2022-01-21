@@ -21,7 +21,7 @@
             <label for="category">Categoria</label>
             <select name="category_id" class="form-control">
                 @foreach ($categories as $category)
-                <option value="{{ $category->id }}" {{ $category->id === $this_post_category ? 'selected' : '' }}>{{ $category->category }}</option>
+                <option value="{{ $category->id }}" {{ $category->id === $this_post_category ? 'selected' : '' }}>{{ $category->name }}</option>
                 @endforeach
             </select>
         </div>
