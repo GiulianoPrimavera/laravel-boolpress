@@ -17,9 +17,8 @@
                 @foreach ($postsData as $singlePost)
                 <li class="list-group-item text-left"><a href="{{ route("admin.posts.show", $singlePost->id) }}">{{ $singlePost->title }}</a>
                     <br> {{ $singlePost->content }}
-                    <br> <p class="small">
-                        {{ $singlePost->category->name }}
-                        </p>
+                    <br> <p class="small">{{ $singlePost->category->name }}</p>
+                    <br> <p class="small">creato da {{ $singlePost->user->name }}</p>
                 </li>
                 @endforeach
             </ul>
