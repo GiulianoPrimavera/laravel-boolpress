@@ -59,9 +59,14 @@ class PostController extends Controller
         $newPost->category_id = $data["category_id"];
         $newPost->save();
         
+        //attach function
         foreach ($data["tags"] as $tag) {
             $newPost->tags()->attach($tag);
         }
+
+        //sync function
+        $newPost->tags()->sync($data["tags"]);
+
 
         return redirect()->route("admin.posts.index")->with("msg", "post creato correttamente");
     }
@@ -87,10 +92,12 @@ class PostController extends Controller
     {
         $categories = Category::all();
         $category_id = $post->category_id;
+        $tags = Tag::all();
         return view("admin.posts.edit", [
             "post" => $post,
             "categories" => $categories,
-            "this_post_category" => $category_id
+            "this_post_category" => $category_id,
+            "tags" => $tags,
         ]);
     }
 
