@@ -2507,7 +2507,7 @@ var render = function () {
     _vm._v(" "),
     _c("p", [_vm._v(_vm._s(_vm.content))]),
     _vm._v(" "),
-    _c("p", { staticClass: "small" }, [_vm._v(_vm._s(_vm.category["name"]))]),
+    _c("p", { staticClass: "small" }, [_vm._v(_vm._s(_vm.category.name))]),
   ])
 }
 var staticRenderFns = []

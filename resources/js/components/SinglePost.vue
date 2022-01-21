@@ -4,7 +4,7 @@
 
         <p>{{ content }}</p>
 
-        <p class="small">{{ category["name"] }}</p>
+        <p class="small">{{ category.name }}</p>
         <!-- {{postList}} -->
     </div>  
 </template>
