@@ -52,14 +52,16 @@ class PostController extends Controller
         
         $data = $request->all();
 
-        dump($data);
-        exit;
         $newPost = new Post();
-        
+
         $newPost->fill($data);
         $newPost->user_id = Auth::user()->id;
         $newPost->category_id = $data["category_id"];
         $newPost->save();
+        
+        foreach ($data["tags"] as $tag) {
+            $newPost->tags()->attach($tag);
+        }
 
         return redirect()->route("admin.posts.index")->with("msg", "post creato correttamente");
     }
