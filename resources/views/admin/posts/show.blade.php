@@ -11,6 +11,12 @@
 
             <p>{{ $post->category->name }}</p>
 
+
+            @foreach($post->tags as $tag)
+            <p class="badge bg-primary text-white">{{$tag->name}}</p>
+            @endforeach
+            {{-- @dump($post->tags) --}}
+
             <div classs="my-5">
                 <a href="{{ route("admin.posts.edit", $post->id) }}" class="btn btn-success my-2">modifica post</a><br>
                 <form action="{{ route("admin.posts.destroy", $post->id) }}" method="post">
