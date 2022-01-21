@@ -18,7 +18,7 @@
                 <li class="list-group-item text-left"><a href="{{ route("admin.posts.show", $singlePost->id) }}">{{ $singlePost->title }}</a>
                     <br> {{ $singlePost->content }}
                     <br> <p class="small">
-                        {{ $singlePost->category->category }}
+                        {{ $singlePost->category->name }}
                         </p>
                 </li>
                 @endforeach
