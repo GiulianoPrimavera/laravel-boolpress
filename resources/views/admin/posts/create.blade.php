@@ -36,6 +36,8 @@
                 </select>
             </div>
 
+            <p class="mb-0">Aggiungi un tag</p>
+            <p class="small mb-0">devi aggiungere almeno un tag</p>
             <div class="form-check">
                 @foreach ($tags as $tag)    
                 <input class="form-check-input" type="checkbox" name="tags[]" id="tag" value="{{ $tag->id }}">
