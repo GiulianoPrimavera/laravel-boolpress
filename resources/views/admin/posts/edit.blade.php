@@ -26,10 +26,18 @@
             </select>
         </div>
 
+        <p class="mb-0">Aggiungi un tag</p>
+        <p class="small mb-0">devi aggiungere almeno un tag</p>
         <div class="form-check">
             @foreach ($tags as $tag)    
-            <input class="form-check-input" type="checkbox" name="tags[]" id="tag" value="{{ $tag->id }}">
-            <label class="form-check-label" for="tag">
+            <input class="form-check-input" 
+            type="checkbox" 
+            name="tags[]" 
+            id="tag" 
+            value="{{ $tag->id }}"  
+            @if ($post->tags->contains($tag)) checked @endif
+            >
+            <label class="form-check-label" for="tag" checked>
                 {{ $tag->name }}
             </label>
             <br>
