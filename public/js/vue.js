@@ -1924,6 +1924,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1968,12 +1969,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "SinglePost",
   props: {
     title: String,
     content: String,
-    category: Object
+    category: Object,
+    tags: Array
   }
 });
 
@@ -2473,6 +2476,7 @@ var render = function () {
           title: singlePost.title,
           content: singlePost.content,
           category: singlePost.category,
+          tags: singlePost.tags,
         },
       })
     }),
@@ -2501,13 +2505,29 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("h3", [_vm._v(_vm._s(_vm.title))]),
-    _vm._v(" "),
-    _c("p", [_vm._v(_vm._s(_vm.content))]),
-    _vm._v(" "),
-    _c("p", { staticClass: "small" }, [_vm._v(_vm._s(_vm.category.name))]),
-  ])
+  return _c(
+    "div",
+    [
+      _c("h3", [_vm._v(_vm._s(_vm.title))]),
+      _vm._v(" "),
+      _c("p", [_vm._v(_vm._s(_vm.content))]),
+      _vm._v(" "),
+      _c("p", { staticClass: "small" }, [_vm._v(_vm._s(_vm.category.name))]),
+      _vm._v(" "),
+      _vm._l(_vm.tags, function (tag, i) {
+        return _c(
+          "p",
+          {
+            key: i,
+            staticClass:
+              "small my-0 mx-2 badge rounded-pill bg-primary text-white",
+          },
+          [_vm._v(_vm._s(tag.name))]
+        )
+      }),
+    ],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

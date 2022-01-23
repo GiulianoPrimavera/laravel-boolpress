@@ -6,8 +6,9 @@
         :title="singlePost.title"
         :content="singlePost.content"
         :category="singlePost.category"
+        :tags="singlePost.tags"
         ></SinglePost> 
-        <!-- {{ postList[0]["category"]["name"] }} -->
+        <!-- {{ postList[1]["tags"][0]["name"] }} -->
     </div>
 </template>
 
