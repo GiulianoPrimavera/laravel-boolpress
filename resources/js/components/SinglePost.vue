@@ -5,7 +5,6 @@
         <p>{{ content }}</p>
 
         <p class="small">{{ category.name }}</p>
-        <!-- {{postList}} -->
     </div>  
 </template>
 
@@ -17,7 +16,7 @@ export default {
     props: {
         title: String,
         content: String,
-        category: Array,
+        category: Object,
     }
 }
 </script>
