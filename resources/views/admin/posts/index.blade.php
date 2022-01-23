@@ -7,10 +7,13 @@
     @if(session("msg"))
         <div class="alert alert-success">{{session("msg")}}</div>
     @endif
-
+    
     <div class="card justify-content-center">
-        
         <div class="text-center">
+            @if (count($postsData) === 0)
+            <a href="{{ route("admin.posts.create") }}" class="btn btn-success my-3">Crea nuovo post</a>
+            <h3>Non ci sono post al momento</h3>
+            @else
             <a href="{{ route("admin.posts.create") }}" class="btn btn-success my-3">Crea nuovo post</a>
 
             <ul class="list-group">
@@ -26,6 +29,7 @@
         </div>
         
     </div>
+    @endif
     <a href="{{ route("admin.home") }}" class="btn btn-primary mt-5">torna alla home</a>
 </div>
 @endsection
