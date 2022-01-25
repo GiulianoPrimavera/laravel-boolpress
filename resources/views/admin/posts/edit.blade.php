@@ -44,8 +44,9 @@
             @endforeach
         </div>
 
-        <button class="btn btn-success" type="submit">Modifica</button>
+        <button class="btn btn-success text-white" type="submit">Modifica</button>
     </form>
+    <a href="{{ route("admin.posts.show", $post->id) }}" class="btn btn-primary text-white my-3">torna al post</a>
 
 </div>
 @endsection

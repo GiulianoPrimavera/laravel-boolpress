@@ -19,11 +19,11 @@
                 <div class="card-body d-flex align-items-center justify-content-between">
                     <span>Click to see the posts</span>
 
-                    <a href="{{ route("admin.posts.index") }}" class="btn btn-primary">Posts</a>
+                    <a href="{{ route("admin.posts.index") }}" class="btn btn-primary text-white">Posts</a>
                 </div>
                 <br>
             </div>
-            <a href="{{ url("guests/home") }}" class="btn btn-primary mt-5">vai alla sezione guests</a>
+            <a href="{{ url("guests/home") }}" class="btn btn-primary mt-5 text-white">vai alla sezione guests</a>
         </div>
     </div>
 </div>

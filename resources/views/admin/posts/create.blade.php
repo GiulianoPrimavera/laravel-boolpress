@@ -48,9 +48,9 @@
                 @endforeach
             </div>
             
-            <button class="btn btn-success my-4" type="submit">Crea</button>
+            <button class="btn btn-success my-4 text-white" type="submit">Crea</button>
             <br>
-            <a href="{{ route("admin.posts.index") }}" class="btn btn-primary">Torna alla pagina dei post</a>
+            <a href="{{ route("admin.posts.index") }}" class="btn btn-primary text-white">Torna alla pagina dei post</a>
         </form>
 
     </div>
