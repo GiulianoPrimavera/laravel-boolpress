@@ -39,7 +39,7 @@
                     <!-- Right Side Of Navbar -->
                     @guest
                         <div class="dropdown">
-                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="btn btn-primary dropdown-toggle text-white" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                                 {{ __('Login') }} or {{ __('Register') }}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -54,7 +54,7 @@
                         </div>
                     @else  
                     <div class="dropdown">
-                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="btn btn-primary dropdown-toggle text-white" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                             {{ Auth::user()->name }}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
