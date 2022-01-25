@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Category;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Post;
+
 class PostController extends Controller
 {
     public function index(){
@@ -12,6 +13,8 @@ class PostController extends Controller
         $allPosts = Post::with("category")->with("user")->with("tags")->get();
         // $categories = Category::all();
         // return (["allPosts" => $allPosts, "categories" => $categories]);
-        return ($allPosts);
+        // return ($allPosts);
+
+        return response()->json($allPosts);
     }
 }
