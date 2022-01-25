@@ -8,13 +8,13 @@
         <div class="alert alert-success">{{session("msg")}}</div>
     @endif
     
-    <div class="card justify-content-center">
-        <div class="text-center">
-            @if (count($postsData) === 0)
-            <a href="{{ route("admin.posts.create") }}" class="btn btn-success my-3 text-white">Crea nuovo post</a>
-            <h3>Non ci sono post al momento</h3>
-            @else
-            <a href="{{ route("admin.posts.create") }}" class="btn btn-success my-3 text-white">Crea nuovo post</a>
+    <div class="container justify-content-center">
+        @if (count($postsData) === 0)
+        <a href="{{ route("admin.posts.create") }}" class="btn btn-success my-3 text-white">Crea nuovo post</a>
+        <h3>Non ci sono post al momento</h3>
+        @else
+        <a href="{{ route("admin.posts.create") }}" class="btn btn-success my-3 text-white">Crea nuovo post</a>
+        <div class="row">
 
             <ul class="list-group">
                 @foreach ($postsData as $singlePost)
