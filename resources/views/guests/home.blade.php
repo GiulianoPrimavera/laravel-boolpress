@@ -37,7 +37,7 @@
                 </ul>
 
                 <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ms-auto">
                     <!-- Authentication Links -->
                     {{-- @guest
                         <li class="nav-item">
@@ -68,7 +68,7 @@
                         </li>
                     @endguest --}}
 
-                    <a href="{{ route("admin.home") }}" class="btn btn-primary">vai alla sezione admin</a>
+                    <a href="{{ route("admin.home") }}" class="btn btn-primary text-white">vai alla sezione admin</a>
                 </ul>
             </div>
         </div>
