@@ -2,6 +2,8 @@
     <div>
         <h3>{{ post.title }}</h3>
 
+        <router-link to="{name: 'posts.show', params: {id: post.id}}"> vai ai dettagli di "{{post.title}}"</router-link>    
+
         <p>{{ post.content }}</p>
 
         <p class="small">{{ post.category.name }}</p>
@@ -14,6 +16,7 @@
 
 <script>
 import dayjs from "dayjs";
+import axios from 'axios';
 
 
 export default {
