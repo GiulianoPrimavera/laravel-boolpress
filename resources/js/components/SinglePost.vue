@@ -15,8 +15,6 @@
 
 <script>
 import dayjs from "dayjs";
-import axios from 'axios';
-
 
 export default {
     name : "SinglePost",
@@ -35,13 +33,7 @@ export default {
         creationDate(){
             return dayjs(this.post.created_at).format("DD/MM/YYYY HH:mm:ss");
         }
-    }/* ,
-    mounted() {
-        console.log(this.$router);
-        axios.get(`/api/posts/${id}`).then((resp) => {
-            this.singlePost = resp.data
-        })
-    } */
+    }
 }
 </script>
 
