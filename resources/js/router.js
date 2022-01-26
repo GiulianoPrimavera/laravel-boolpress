@@ -31,7 +31,7 @@ const router = new VueRouter({
         },
         {
             path: "/posts/:id",
-            name: "post.show",
+            name: "post",
             component: PostShow
         },
     ]

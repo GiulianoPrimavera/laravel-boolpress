@@ -18,8 +18,8 @@ class PostController extends Controller
         return response()->json($allPosts);
     }
 
-    public function show(Post $post){
-        $singlePostData = Post::where("id", $post->id)->get();
+    public function show($id){
+        $singlePostData = Post::where("id", $id)->with("category")->with("tags")->first();
         
         return response()->json($singlePostData);
     }

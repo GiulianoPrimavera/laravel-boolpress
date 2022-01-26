@@ -10,7 +10,7 @@
 
 <script>
 import axios from "axios";
-import SinglePost from "../components/SinglePost.vue";
+import SinglePost from "./PostShow.vue";
 
 export default {
   components: {
