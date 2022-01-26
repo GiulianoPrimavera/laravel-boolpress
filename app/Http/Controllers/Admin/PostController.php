@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Tag;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 class PostController extends Controller
 {
     /**
@@ -52,11 +53,15 @@ class PostController extends Controller
         
         $data = $request->all();
 
+        //questo funziona
+        $slug = Str::slug($data["title"]);
+
         $newPost = new Post();
 
         $newPost->fill($data);
         $newPost->user_id = Auth::user()->id;
         $newPost->category_id = $data["category_id"];
+        $newPost->slug = $slug;
         $newPost->save();
         
         //attach function
