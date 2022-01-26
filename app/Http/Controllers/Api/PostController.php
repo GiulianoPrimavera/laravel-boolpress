@@ -17,4 +17,10 @@ class PostController extends Controller
 
         return response()->json($allPosts);
     }
+
+    public function show(Post $post){
+        $singlePostData = Post::where("id", $post->id)->get();
+        
+        return response()->json($singlePostData);
+    }
 }
