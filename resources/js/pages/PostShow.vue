@@ -1,15 +1,24 @@
 <template>
     <div>
-        <h3>{{ post.title }}</h3>
+        <div v-if="this.post != null">
 
-        <router-link :to="{name: 'post', params: {id: post.id}}"> vai ai dettagli di "{{post.title}}"</router-link>    
+            <h3>{{ post.title }}</h3>
 
-        <p>{{ post.content }}</p>
+            <!-- <router-link :to="{name: 'post', params: {id: post.id}}"> vai ai dettagli di "{{post.title}}"</router-link>     -->
 
-        <p class="small">{{ post.category.name }}</p>
-        <p class="small">{{ creationDate }}</p>
+            <p>{{ post.content }}</p>
+
+            <p class="small">{{ post.category.name }}</p>
+            <p class="small">{{ creationDate }}</p>
+            
+            <p class="small my-0 mx-2 badge rounded-pill bg-primary text-white" v-for="(tag, i) in post.tags" :key="i">{{ tag.name }}</p>
+
+        </div>
         
-        <p class="small my-0 mx-2 badge rounded-pill bg-primary text-white" v-for="(tag, i) in post.tags" :key="i">{{ tag.name }}</p>
+        <div v-else>
+            nessun post
+        </div>
+        <router-link to="../" class="btn btn-primary text-white mt-5">torna alla home</router-link>  
     </div>  
 </template>
 
@@ -22,7 +31,7 @@ export default {
     name : "PostShow",
     data() {
         return {
-            post: []
+            post: null
         }
     },
     computed: {
@@ -31,10 +40,9 @@ export default {
         }
     },
     mounted() {
-        console.log(this.$route.params.id);
+        // console.log(this.$route.params.id);
         let id = this.$route.params.id
         axios.get(`/api/posts/${id}`).then((resp) => {
-            console.log(resp);
             this.post = resp.data
         })
     } 
