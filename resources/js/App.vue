@@ -5,7 +5,9 @@
         :key="i"
         :post="post"
         ></SinglePost>  -->
-        
+        <Navbar></Navbar>
+
+
         <router-view>
         <!-- qui dentro ci saranno le varie pagine -->
         </router-view>
@@ -15,11 +17,13 @@
 <script>
 import axios from "axios";
 import SinglePost from "./components/SinglePost.vue";
+import Navbar from "./components/Navbar.vue";
 
 export default {
     name: "App",
     components: { 
-        SinglePost
+        /* SinglePost */
+        Navbar
         },
     data() {
         return {
