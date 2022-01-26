@@ -1,12 +1,17 @@
 <template>
     <div class="container text-center">
-        <SinglePost class="my-5"
+        <!-- <SinglePost class="my-5"
         v-for="singlePost, i in postList" 
         :key="i"
         :title="singlePost.title"
         :content="singlePost.content"
         :category="singlePost.category"
         :tags="singlePost.tags"
+        ></SinglePost>  -->
+        <SinglePost class="my-5"
+        v-for="post, i in postList" 
+        :key="i"
+        :post="post"
         ></SinglePost> 
         <!-- {{ postList[1]["tags"][0]["name"] }} -->
     </div>
