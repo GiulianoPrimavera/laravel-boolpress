@@ -1910,8 +1910,7 @@ module.exports = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_SinglePost_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/SinglePost.vue */ "./resources/js/components/SinglePost.vue");
-/* harmony import */ var _components_Navbar_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Navbar.vue */ "./resources/js/components/Navbar.vue");
+/* harmony import */ var _components_Navbar_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Navbar.vue */ "./resources/js/components/Navbar.vue");
 //
 //
 //
@@ -1923,33 +1922,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "App",
   components: {
-    /* SinglePost */
-    Navbar: _components_Navbar_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+    Navbar: _components_Navbar_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
       helloMsg: "pagina geusts dei post",
-      postList: [],
       categoriesList: []
     };
-  },
-  mounted: function mounted() {
-    var _this = this;
-
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/posts").then(function (resp) {
-      _this.postList = resp.data;
-    });
   }
 });
 
@@ -2097,13 +2081,43 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_SinglePost_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/SinglePost.vue */ "./resources/js/components/SinglePost.vue");
 //
 //
 //
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    SinglePost: _components_SinglePost_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  data: function data() {
+    return {
+      postList: []
+    };
+  },
+  methods: {
+    getData: function getData() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/posts").then(function (resp) {
+        _this.postList = resp.data;
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getData();
+  }
+});
 
 /***/ }),
 
@@ -2879,16 +2893,19 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    _vm._l(_vm.postList, function (post, i) {
+      return _c("SinglePost", {
+        key: i,
+        staticClass: "my-5",
+        attrs: { post: post },
+      })
+    }),
+    1
+  )
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("questa è la home")])])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
