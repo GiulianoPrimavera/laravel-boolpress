@@ -11,6 +11,31 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 class PostController extends Controller
 {
+    private function getSlug($string){
+        $slug = Str::slug($string);
+
+        $postData = Post::all();
+
+        $counter = 1;
+        foreach ($postData as $singlePost) {
+            if($singlePost->slug = $slug){
+                $slug = $slug . "-" . $counter;
+                $counter++;
+            }
+        }
+        return $slug;
+        /* $alreadyExists = Post::where("slug", $slug)->first();
+        $counter = 1;
+
+        while($alreadyExists){
+            $newSlug = $slug . "-" . $counter;
+
+            
+        } */
+
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -54,14 +79,14 @@ class PostController extends Controller
         $data = $request->all();
 
         //questo funziona
-        $slug = Str::slug($data["title"]);
+        // $slug = Str::slug($data["title"]);
 
         $newPost = new Post();
 
         $newPost->fill($data);
         $newPost->user_id = Auth::user()->id;
         $newPost->category_id = $data["category_id"];
-        $newPost->slug = $slug;
+        $newPost->slug = $this->getSlug($newPost["title"]);
         $newPost->save();
         
         //attach function
