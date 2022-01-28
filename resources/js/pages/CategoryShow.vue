@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>questa è la pagina delle categories</h1>
+    <h1>questa è la pagina dei post con categoria {{categoryName}}</h1>
 
     <div class="bg-light" v-for="post in posts" :key="post.id">
       <h3>{{ post.title }}</h3>
@@ -26,6 +26,7 @@ export default {
   data() {
     return {
       posts: [],
+      categoryName: ""
     };
   },
   methods: {
@@ -33,6 +34,7 @@ export default {
       const id = this.$route.params.category;
       axios.get(`/api/category/${id}`).then((resp) => {
         this.posts = resp.data.post;
+        this.categoryName = resp.data.name;
         // console.log(resp.data.post);
       });
     },
