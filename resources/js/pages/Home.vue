@@ -13,7 +13,7 @@
         <h4>questa è la sidebar</h4>
         <ul>
           <li v-for="category in categories" :key="category.id">
-            <router-link to="/ciao">{{category.name}}</router-link>
+            <router-link :to="{ name: 'categories', params: {category: category.id} }">{{category.name}}</router-link>
           </li>
         </ul>
       </div>

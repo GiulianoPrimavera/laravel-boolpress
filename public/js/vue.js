@@ -3113,9 +3113,18 @@ var render = function () {
               "li",
               { key: category.id },
               [
-                _c("router-link", { attrs: { to: "/ciao" } }, [
-                  _vm._v(_vm._s(category.name)),
-                ]),
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      to: {
+                        name: "categories",
+                        params: { category: category.id },
+                      },
+                    },
+                  },
+                  [_vm._v(_vm._s(category.name))]
+                ),
               ],
               1
             )
