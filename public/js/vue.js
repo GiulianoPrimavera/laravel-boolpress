@@ -2163,6 +2163,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3072,19 +3080,35 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    _vm._l(_vm.postList, function (post, i) {
-      return _c("SinglePost", {
-        key: i,
-        staticClass: "my-5",
-        attrs: { post: post },
-      })
-    }),
-    1
-  )
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-10" },
+        _vm._l(_vm.postList, function (post, i) {
+          return _c("SinglePost", {
+            key: i,
+            staticClass: "my-5",
+            attrs: { post: post },
+          })
+        }),
+        1
+      ),
+      _vm._v(" "),
+      _vm._m(0),
+    ]),
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-2" }, [
+      _c("h2", [_vm._v("questa è la sidebar")]),
+    ])
+  },
+]
 render._withStripped = true
 
 
