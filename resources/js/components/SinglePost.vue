@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="bg-light">
         <h3>{{ post.title }}</h3>
 
         <router-link :to="{name: 'post', params: {id: post.id}}"> vai ai dettagli di "{{post.title}}"</router-link>    
