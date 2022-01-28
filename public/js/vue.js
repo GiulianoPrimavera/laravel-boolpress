@@ -2100,7 +2100,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      posts: []
+      posts: [],
+      categoryName: ""
     };
   },
   methods: {
@@ -2109,7 +2110,8 @@ __webpack_require__.r(__webpack_exports__);
 
       var id = this.$route.params.category;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/category/".concat(id)).then(function (resp) {
-        _this.posts = resp.data.post; // console.log(resp.data.post);
+        _this.posts = resp.data.post;
+        _this.categoryName = resp.data.name; // console.log(resp.data.post);
       });
     }
   },
@@ -2984,7 +2986,12 @@ var render = function () {
   return _c(
     "div",
     [
-      _c("h1", [_vm._v("questa è la pagina delle categories")]),
+      _c("h1", [
+        _vm._v(
+          "questa è la pagina dei post con categoria " +
+            _vm._s(_vm.categoryName)
+        ),
+      ]),
       _vm._v(" "),
       _vm._l(_vm.posts, function (post) {
         return _c(
@@ -3138,7 +3145,7 @@ var render = function () {
         "router-link",
         {
           staticClass: "btn btn-primary text-white mt-5",
-          attrs: { to: "../" },
+          attrs: { to: "../", exact: "" },
         },
         [_vm._v("torna alla home")]
       ),

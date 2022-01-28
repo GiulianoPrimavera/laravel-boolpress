@@ -18,7 +18,7 @@
         <div v-else>
             nessun post
         </div>
-        <router-link to="../" class="btn btn-primary text-white mt-5">torna alla home</router-link>  
+        <router-link to="../" class="btn btn-primary text-white mt-5" exact>torna alla home</router-link>  
     </div>  
 </template>
 
