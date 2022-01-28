@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Post;
@@ -15,7 +16,12 @@ class PostController extends Controller
         // return (["allPosts" => $allPosts, "categories" => $categories]);
         // return ($allPosts);
 
-        return response()->json($allPosts);
+        $allCategories = Category::all();
+
+        return response()->json([
+            "allPosts" => $allPosts,
+            "allCategories" => $allCategories
+        ]);
     }
 
     public function show($id){
