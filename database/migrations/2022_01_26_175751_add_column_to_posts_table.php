@@ -14,7 +14,7 @@ class AddColumnToPostsTable extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->string("slug")->after("title");
+            $table->string("slug")->nullable(true)->after("title");
         });
     }
 

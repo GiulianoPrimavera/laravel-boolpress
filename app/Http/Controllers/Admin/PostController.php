@@ -86,7 +86,7 @@ class PostController extends Controller
         $newPost->fill($data);
         $newPost->user_id = Auth::user()->id;
         $newPost->category_id = $data["category_id"];
-        $newPost->slug = $this->getSlug($newPost["title"]);
+        // $newPost->slug = $this->getSlug($newPost["title"]);
         $newPost->save();
         
         //attach function
