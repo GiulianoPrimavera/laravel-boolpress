@@ -2,17 +2,17 @@
   <div class="container">
     <div class="row">
 
-      <div class="col-10">
+      <div class="col-9">
         <SinglePost class="my-5"
           v-for="post, i in postList" 
           :key="i"
           :post="post"
           ></SinglePost> 
       </div>
-      <div class="col-2">
-        <h4>questa è la sidebar</h4>
-        <ul>
-          <li v-for="category in categories" :key="category.id">
+      <div class="col-3">
+        <h4>scegli post per categoria</h4>
+        <ul class="list-group">
+          <li v-for="category in categories" :key="category.id" class="list-group-item">
             <router-link :to="{ name: 'categories', params: {category: category.id} }">{{category.name}}</router-link>
           </li>
         </ul>

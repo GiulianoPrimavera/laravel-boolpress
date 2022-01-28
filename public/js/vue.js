@@ -3092,7 +3092,7 @@ var render = function () {
     _c("div", { staticClass: "row" }, [
       _c(
         "div",
-        { staticClass: "col-10" },
+        { staticClass: "col-9" },
         _vm._l(_vm.postList, function (post, i) {
           return _c("SinglePost", {
             key: i,
@@ -3103,15 +3103,16 @@ var render = function () {
         1
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "col-2" }, [
-        _c("h4", [_vm._v("questa è la sidebar")]),
+      _c("div", { staticClass: "col-3" }, [
+        _c("h4", [_vm._v("scegli post per categoria")]),
         _vm._v(" "),
         _c(
           "ul",
+          { staticClass: "list-group" },
           _vm._l(_vm.categories, function (category) {
             return _c(
               "li",
-              { key: category.id },
+              { key: category.id, staticClass: "list-group-item" },
               [
                 _c(
                   "router-link",
