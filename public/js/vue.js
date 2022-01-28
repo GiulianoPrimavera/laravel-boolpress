@@ -1986,7 +1986,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Navbar"
+  name: "Navbar",
+  data: function data() {
+    return {};
+  },
+  methods: {}
 });
 
 /***/ }),
@@ -2741,8 +2745,8 @@ var render = function () {
                     _c(
                       "router-link",
                       {
-                        staticClass: "nav-link active",
-                        attrs: { "aria-current": "page", to: "/" },
+                        staticClass: "nav-link",
+                        attrs: { "aria-current": "page", to: "/", exact: "" },
                       },
                       [_vm._v("Home")]
                     ),
@@ -2757,7 +2761,7 @@ var render = function () {
                     _c(
                       "router-link",
                       {
-                        staticClass: "nav-link active",
+                        staticClass: "nav-link",
                         attrs: { "aria-current": "page", to: "/about" },
                       },
                       [_vm._v("About")]
@@ -2773,7 +2777,7 @@ var render = function () {
                     _c(
                       "router-link",
                       {
-                        staticClass: "nav-link active",
+                        staticClass: "nav-link",
                         attrs: { "aria-current": "page", to: "/contact" },
                       },
                       [_vm._v("Contacts")]
