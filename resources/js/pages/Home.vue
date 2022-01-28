@@ -1,13 +1,22 @@
 <template>
   <div class="container">
     <div class="row">
-
+    
       <div class="col-9">
-        <SinglePost class="my-5"
-          v-for="post, i in postList" 
-          :key="i"
-          :post="post"
-          ></SinglePost> 
+
+        <div  v-if="loading === true">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+
+        <div v-else>
+          <SinglePost class="my-5"
+            v-for="post, i in postList" 
+            :key="i"
+            :post="post"
+            ></SinglePost> 
+        </div>
       </div>
       <div class="col-3">
         <h4>scegli post per categoria</h4>
@@ -32,15 +41,18 @@ export default {
   data() {
     return {
       postList: [],
-      categories: []
+      categories: [],
+      loading: true
     }
   },
   methods: {
     getData() {
+      this.loading = true;
       axios.get("/api/posts").then((resp) => {
-        console.log(resp.data);
+        // console.log(resp.data);
         this.postList = resp.data.allPosts
         this.categories = resp.data.allCategories
+        this.loading = false
       })
     }
   },

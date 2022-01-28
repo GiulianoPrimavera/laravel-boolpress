@@ -2176,6 +2176,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2185,17 +2194,20 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       postList: [],
-      categories: []
+      categories: [],
+      loading: true
     };
   },
   methods: {
     getData: function getData() {
       var _this = this;
 
+      this.loading = true;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/posts").then(function (resp) {
-        console.log(resp.data);
+        // console.log(resp.data);
         _this.postList = resp.data.allPosts;
         _this.categories = resp.data.allCategories;
+        _this.loading = false;
       });
     }
   },
@@ -3090,18 +3102,21 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row" }, [
-      _c(
-        "div",
-        { staticClass: "col-9" },
-        _vm._l(_vm.postList, function (post, i) {
-          return _c("SinglePost", {
-            key: i,
-            staticClass: "my-5",
-            attrs: { post: post },
-          })
-        }),
-        1
-      ),
+      _c("div", { staticClass: "col-9" }, [
+        _vm.loading === true
+          ? _c("div", [_vm._m(0)])
+          : _c(
+              "div",
+              _vm._l(_vm.postList, function (post, i) {
+                return _c("SinglePost", {
+                  key: i,
+                  staticClass: "my-5",
+                  attrs: { post: post },
+                })
+              }),
+              1
+            ),
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-3" }, [
         _c("h4", [_vm._v("scegli post per categoria")]),
@@ -3136,7 +3151,18 @@ var render = function () {
     ]),
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "spinner-border text-primary", attrs: { role: "status" } },
+      [_c("span", { staticClass: "visually-hidden" }, [_vm._v("Loading...")])]
+    )
+  },
+]
 render._withStripped = true
 
 
