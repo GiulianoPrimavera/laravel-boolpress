@@ -9,7 +9,7 @@
 
       <p>{{ post.content }}</p>
 
-      <p class="small">{{ creationDate }}</p>
+      <p class="small">{{ post.creationDate }}</p>
 
     </div>
   </div>
