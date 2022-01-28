@@ -23,7 +23,7 @@
                 </div>
                 <br>
             </div>
-            <a href="{{ url("guests/home") }}" class="btn btn-primary mt-5 text-white">vai alla sezione guests</a>
+            <a href="{{ url("/") }}" class="btn btn-primary mt-5 text-white">vai alla sezione guests</a>
         </div>
     </div>
 </div>
