@@ -2171,6 +2171,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2179,7 +2184,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      postList: []
+      postList: [],
+      categories: []
     };
   },
   methods: {
@@ -2187,7 +2193,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/posts").then(function (resp) {
-        _this.postList = resp.data;
+        console.log(resp.data);
+        _this.postList = resp.data.allPosts;
+        _this.categories = resp.data.allCategories;
       });
     }
   },
@@ -3017,7 +3025,7 @@ var render = function () {
             _c("p", [_vm._v(_vm._s(post.content))]),
             _vm._v(" "),
             _c("p", { staticClass: "small" }, [
-              _vm._v(_vm._s(_vm.creationDate)),
+              _vm._v(_vm._s(post.creationDate)),
             ]),
           ],
           1
@@ -3095,20 +3103,30 @@ var render = function () {
         1
       ),
       _vm._v(" "),
-      _vm._m(0),
+      _c("div", { staticClass: "col-2" }, [
+        _c("h4", [_vm._v("questa è la sidebar")]),
+        _vm._v(" "),
+        _c(
+          "ul",
+          _vm._l(_vm.categories, function (category) {
+            return _c(
+              "li",
+              { key: category.id },
+              [
+                _c("router-link", { attrs: { to: "/ciao" } }, [
+                  _vm._v(_vm._s(category.name)),
+                ]),
+              ],
+              1
+            )
+          }),
+          0
+        ),
+      ]),
     ]),
   ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-2" }, [
-      _c("h2", [_vm._v("questa è la sidebar")]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

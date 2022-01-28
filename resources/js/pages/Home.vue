@@ -10,7 +10,12 @@
           ></SinglePost> 
       </div>
       <div class="col-2">
-        <h2>questa è la sidebar</h2>
+        <h4>questa è la sidebar</h4>
+        <ul>
+          <li v-for="category in categories" :key="category.id">
+            <router-link to="/ciao">{{category.name}}</router-link>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -27,12 +32,15 @@ export default {
   data() {
     return {
       postList: [],
+      categories: []
     }
   },
   methods: {
     getData() {
       axios.get("/api/posts").then((resp) => {
-        this.postList = resp.data
+        console.log(resp.data);
+        this.postList = resp.data.allPosts
+        this.categories = resp.data.allCategories
       })
     }
   },
