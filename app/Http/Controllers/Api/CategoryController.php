@@ -8,9 +8,7 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function show($category){
-        /* dump($category);
-        exit; */
+    public function show($id){
         /***
          * per fare chiarezza nella mia testa
          * 1. L'argomento che viene passato alla funzione show, !è l'argomento variabile che viene letto nell'url
@@ -18,7 +16,11 @@ class CategoryController extends Controller
          * 2. il paragone che viene fatto nel where() è tra l'id di una categoria e il parametro che accetta la funzione  show()
          * 3. il with() è da studiare come funziona, so solo che insieme alla tabella principale ci attacca tutte quelle che sono collegate tramite relazione a database 
          *   */
-        $category = Category::where("id", $category)->with("post")->get();
+        $category = Category::where("id", $id)->with("post")->first();
+
+        /* dump($category);
+        exit; */
+        
 
         return response()->json($category);
     }
