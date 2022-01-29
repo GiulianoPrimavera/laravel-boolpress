@@ -19,7 +19,7 @@
             <ul class="list-group">
                 @foreach ($postsData as $singlePost)
                 {{-- @dump($singlePost->slug) --}}
-                <li class="list-group-item text-left"><a href="{{ route("admin.posts.show", $singlePost->id) }}">{{ $singlePost->title }}</a>
+                <li class="list-group-item text-left"><a href="{{ route("admin.posts.show", $singlePost->slug) }}">{{ $singlePost->title }}</a>
                     <br> <p>{{ $singlePost->content }}</p>
                     <p class="small m-0">{{ $singlePost->category->name }}</p>
                     <p class="small m-0">{{ $singlePost->created_at->format("d/m/y H:i") }}</p>
