@@ -152,6 +152,7 @@ class PostController extends Controller
         $post->update($updatedData);
         $post->category_id = $updatedData["category_id"];
         $post->tags()->sync($updatedData["tags"]);
+        $post->slug = $this->getSlug($updatedData["title"]);
         $post->save();
 
         return redirect()->route("admin.posts.show", compact("post"))->with("msg", "post modificato correttamente");
