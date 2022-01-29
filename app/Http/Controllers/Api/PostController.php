@@ -18,7 +18,7 @@ class PostController extends Controller
 
         $allCategories = Category::all();
 
-        sleep(2);
+        // sleep(2);
         return response()->json([
             "allPosts" => $allPosts,
             "allCategories" => $allCategories

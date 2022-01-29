@@ -2092,6 +2092,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2101,17 +2128,20 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       posts: [],
-      categoryName: ""
+      categoryName: "",
+      loading: true
     };
   },
   methods: {
     getData: function getData() {
       var _this = this;
 
+      this.loading = true;
       var id = this.$route.params.category;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/category/".concat(id)).then(function (resp) {
         _this.posts = resp.data.post;
-        _this.categoryName = resp.data.name; // console.log(resp.data.post);
+        _this.categoryName = resp.data.name;
+        _this.loading = false; // console.log(resp.data.post);
       });
     }
   },
@@ -2153,6 +2183,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_SinglePost_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/SinglePost.vue */ "./resources/js/components/SinglePost.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3011,43 +3056,103 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("h1", [
-        _vm._v(
-          "questa è la pagina dei post con categoria " +
-            _vm._s(_vm.categoryName)
-        ),
-      ]),
-      _vm._v(" "),
-      _vm._l(_vm.posts, function (post) {
-        return _c(
-          "div",
-          { key: post.id, staticClass: "bg-light" },
-          [
-            _c("h3", [_vm._v(_vm._s(post.title))]),
-            _vm._v(" "),
-            _c(
-              "router-link",
-              { attrs: { to: { name: "post", params: { id: post.id } } } },
-              [_vm._v('vai ai dettagli di "' + _vm._s(post.title) + '"')]
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-9" },
+        [
+          _c("h1", [
+            _vm._v(
+              "questa è la pagina dei post con categoria: " +
+                _vm._s(_vm.categoryName)
             ),
-            _vm._v(" "),
-            _c("p", [_vm._v(_vm._s(post.content))]),
-            _vm._v(" "),
-            _c("p", { staticClass: "small" }, [
-              _vm._v(_vm._s(post.creationDate)),
+          ]),
+          _vm._v(" "),
+          _vm.loading === true
+            ? _c("div", [_vm._m(0)])
+            : _vm._l(_vm.posts, function (post) {
+                return _c(
+                  "div",
+                  { key: post.id, staticClass: "bg-light" },
+                  [
+                    _c("h3", [_vm._v(_vm._s(post.title))]),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      {
+                        attrs: {
+                          to: { name: "post", params: { id: post.id } },
+                        },
+                      },
+                      [
+                        _vm._v(
+                          'vai ai dettagli di "' + _vm._s(post.title) + '"'
+                        ),
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("p", [_vm._v(_vm._s(post.content))]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "small" }, [
+                      _vm._v(_vm._s(post.creationDate)),
+                    ]),
+                  ],
+                  1
+                )
+              }),
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-3" }, [
+        _c("h4", [_vm._v("Torna alla home")]),
+        _vm._v(" "),
+        _vm.loading === true
+          ? _c("div", [_vm._m(1)])
+          : _c("div", [
+              _c(
+                "div",
+                { staticClass: "btn btn-success text-white" },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "text-white",
+                      attrs: { to: "/", exact: "" },
+                    },
+                    [_vm._v("home")]
+                  ),
+                ],
+                1
+              ),
             ]),
-          ],
-          1
-        )
-      }),
-    ],
-    2
-  )
+      ]),
+    ]),
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "spinner-border text-primary", attrs: { role: "status" } },
+      [_c("span", { staticClass: "visually-hidden" }, [_vm._v("Loading...")])]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "spinner-border text-primary", attrs: { role: "status" } },
+      [_c("span", { staticClass: "visually-hidden" }, [_vm._v("Loading...")])]
+    )
+  },
+]
 render._withStripped = true
 
 
@@ -3121,37 +3226,51 @@ var render = function () {
       _c("div", { staticClass: "col-3" }, [
         _c("h4", [_vm._v("scegli post per categoria")]),
         _vm._v(" "),
-        _c(
-          "ul",
-          { staticClass: "list-group" },
-          _vm._l(_vm.categories, function (category) {
-            return _c(
-              "li",
-              { key: category.id, staticClass: "list-group-item" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    attrs: {
-                      to: {
-                        name: "categories",
-                        params: { category: category.id },
-                      },
-                    },
-                  },
-                  [_vm._v(_vm._s(category.name))]
-                ),
-              ],
-              1
-            )
-          }),
-          0
-        ),
+        _vm.loading === true
+          ? _c("div", [_vm._m(1)])
+          : _c("div", [
+              _c(
+                "ul",
+                { staticClass: "list-group" },
+                _vm._l(_vm.categories, function (category) {
+                  return _c(
+                    "li",
+                    { key: category.id, staticClass: "list-group-item" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          attrs: {
+                            to: {
+                              name: "categories",
+                              params: { category: category.id },
+                            },
+                          },
+                        },
+                        [_vm._v(_vm._s(category.name))]
+                      ),
+                    ],
+                    1
+                  )
+                }),
+                0
+              ),
+            ]),
       ]),
     ]),
   ])
 }
 var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "spinner-border text-primary", attrs: { role: "status" } },
+      [_c("span", { staticClass: "visually-hidden" }, [_vm._v("Loading...")])]
+    )
+  },
   function () {
     var _vm = this
     var _h = _vm.$createElement
