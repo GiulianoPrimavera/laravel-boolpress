@@ -13,26 +13,28 @@ class PostController extends Controller
 {
     private function getSlug($string){
         $slug = Str::slug($string);
-
-        $postData = Post::all();
-
-        $counter = 1;
-        foreach ($postData as $singlePost) {
-            if($singlePost->slug = $slug){
-                $slug = $slug . "-" . $counter;
-                $counter++;
-            }
-        }
-        return $slug;
-        /* $alreadyExists = Post::where("slug", $slug)->first();
+        // $postData = Post::all();
+        
+        //cerco nei post un post dove lo "slug" è uguale allo $slug appena generato
+        $doubleSlug = Post::where("slug", $slug)->first();
         $counter = 1;
 
-        while($alreadyExists){
+        //se è statp trovato uno "slug" doppione entra in questo ciclo
+        while($doubleSlug){
+            //modifica lo $slug appena generato in uno "slug" diverso  
             $newSlug = $slug . "-" . $counter;
 
-            
-        } */
+            //dopo che ho generato il nuovo "slug", cerco se ce ne è uno uguale nel database 
+            $doubleSlug = Post::where("slug", $newSlug)->first();
 
+            $counter++;
+            //se non esiste uno "slug" doppione allora
+            if(!$doubleSlug){
+                $slug = $newSlug;
+            }
+        }
+        //se non esiste uno "slug" doppione pusho lo $slug appena generato 
+        return $slug;
     }
 
 
@@ -86,7 +88,7 @@ class PostController extends Controller
         $newPost->fill($data);
         $newPost->user_id = Auth::user()->id;
         $newPost->category_id = $data["category_id"];
-        // $newPost->slug = $this->getSlug($newPost["title"]);
+        $newPost->slug = $this->getSlug($newPost["title"]);
         $newPost->save();
         
         //attach function
