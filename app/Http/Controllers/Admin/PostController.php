@@ -75,7 +75,8 @@ class PostController extends Controller
     {
         $request->validate([
             "title" => "required|min:5",
-            "content" => "required|min:5"
+            "content" => "required|min:5",
+            "tags" => "required"
         ]);
         
         $data = $request->all();
@@ -122,8 +123,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit($slug)
     {
+        $post = Post::where("slug", $slug)->first();
+
         $categories = Category::all();
         $category_id = $post->category_id;
         $tags = Tag::all();
@@ -142,8 +145,12 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, $slug)
     {
+        $post = Post::where("slug", $slug)->first();
+        /* dump($post);
+        exit; */
+        
         $request->validate([
             "title" => "required|min:5",
             "content" => "required|min:5"
@@ -157,7 +164,7 @@ class PostController extends Controller
         $post->slug = $this->getSlug($updatedData["title"]);
         $post->save();
 
-        return redirect()->route("admin.posts.show", compact("post"))->with("msg", "post modificato correttamente");
+        return redirect()->route("admin.posts.index")->with("msg", "post modificato correttamente");
     }
 
     /**
@@ -166,8 +173,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($slug)
     {
+        $post = Post::where("slug", $slug)->first();
+
         $post->delete();
 
         return redirect()->route("admin.posts.index");
