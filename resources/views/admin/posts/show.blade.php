@@ -18,8 +18,8 @@
             {{-- @dump($post->tags) --}}
 
             <div classs="my-5">
-                <a href="{{ route("admin.posts.edit", $post->id) }}" class="btn btn-success my-2 text-white">modifica post</a><br>
-                <form action="{{ route("admin.posts.destroy", $post->id) }}" method="post">
+                <a href="{{ route("admin.posts.edit", $post->slug) }}" class="btn btn-success my-2 text-white">modifica post</a><br>
+                <form action="{{ route("admin.posts.destroy", $post->slug) }}" method="post">
                     @csrf
                     @method("DELETE")
                     <button type="submit" class="btn btn-danger my-2 text-white">elimina post</button>

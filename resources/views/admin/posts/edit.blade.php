@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 
-    <form action="{{ route("admin.posts.update", $post->id) }}" method="post">
+    <form action="{{ route("admin.posts.update", $post->slug) }}" method="post">
         @csrf
 
         @method("PUT")
@@ -46,7 +46,7 @@
 
         <button class="btn btn-success text-white" type="submit">Modifica</button>
     </form>
-    <a href="{{ route("admin.posts.show", $post->id) }}" class="btn btn-primary text-white my-3">torna al post</a>
+    <a href="{{ route("admin.posts.show", $post->slug) }}" class="btn btn-primary text-white my-3">torna al post</a>
 
 </div>
 @endsection
