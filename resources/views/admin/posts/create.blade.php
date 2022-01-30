@@ -19,12 +19,12 @@
 
             <div class="form-group">
                 <label for="title">Inserisci il titolo del post</label>
-                <input type="text" id="title" class="form-control" name="title">
+                <input type="text" id="title" class="form-control" name="title" value="{{ old("title") }}">
             </div>
 
             <div class="form-group">
                 <label for="content">Inserisci il contenuto del post</label>
-                <input type="text" id="content" class="form-control" name="content">
+                <input type="text" id="content" class="form-control" name="content" value="{{ old("content") }}">
             </div>
 
             <div class="form-group">
