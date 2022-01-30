@@ -11,15 +11,14 @@ class PostController extends Controller
 {
     public function index(){
 
-        $allPosts = Post::with("category")->with("user")->with("tags")->paginate(2);
+        $allPosts = Post::with("category")->with("user")->with("tags")->get();
         // $categories = Category::all();
         // return (["allPosts" => $allPosts, "categories" => $categories]);
         // return ($allPosts);
 
         $allCategories = Category::all();
 
-        /* dump($allPosts);
-        exit; */
+        
 
         // sleep(2);
         return response()->json([
