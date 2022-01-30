@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <div class="row">
+      <!-- main content -->
       <div class="col-9">
         <div v-if="loading === true">
           <div class="spinner-border text-primary" role="status">
@@ -17,6 +18,7 @@
           ></SinglePost>
         </div>
       </div>
+      <!-- sidebar con le categorie -->
       <div class="col-3">
         <h4>scegli post per categoria</h4>
 
