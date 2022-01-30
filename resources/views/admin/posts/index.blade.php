@@ -30,6 +30,11 @@
 
         </div>
         
+        {{-- qui ci andranno i bottoni --}}
+        {{-- @dump($postsData->links()) --}}
+        <div class="my-5">
+            {{$postsData->links()}}
+        </div>
     </div>
     @endif
     <a href="{{ route("admin.home") }}" class="btn btn-primary mt-5 text-white">torna alla home</a>
