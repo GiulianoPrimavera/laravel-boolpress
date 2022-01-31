@@ -7,6 +7,8 @@
         <div>
             <h2>{{ $post->title }}</h2>
 
+            <img src="{{ asset('storage/' . $post->coverImg) }}" alt="{{ $post->title }}">
+
             <p>{{ $post->content }}</p>
 
             <p>{{ $post->category->name }}</p>
