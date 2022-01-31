@@ -3,20 +3,29 @@
 @section('content')
 <div class="container">
 
-    <form action="{{ route("admin.posts.update", $post->slug) }}" method="post">
+    <form action="{{ route("admin.posts.update", $post->slug) }}" method="post" enctype="multipart/form-data">
         @csrf
 
         @method("PUT")
+        {{-- TITOLO --}}
         <div class="form-group">
             <label for="title">Inserisci il nuovo titolo del post</label>
             <input type="text" id="title" class="form-control" name="title" value="{{ $post->title }}">
         </div>
 
+        {{-- IMMAGINE --}}
+        <div class="form-group">
+            <label for="content">Inserisci un'immagine</label>
+            <input type="file" id="content" class="form-control" name="coverImg">
+        </div>
+
+        {{-- CONTENUTO --}}
         <div class="form-group">
             <label for="content">Inserisci il nuovo contenuto del post</label>
             <input type="text" id="content" class="form-control" name="content" value="{{ $post->content }}">
         </div>
 
+        {{-- CATEGORIA --}}
         <div class="form-group">
             <label for="category">Categoria</label>
             <select name="category_id" class="form-control">
@@ -26,6 +35,7 @@
             </select>
         </div>
 
+        {{-- TAGS --}}
         <p class="mb-0">Aggiungi un tag</p>
         <p class="small mb-0">devi aggiungere almeno un tag</p>
         <div class="form-check">
