@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Tag;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 class PostController extends Controller
 {
@@ -81,11 +82,13 @@ class PostController extends Controller
         
         $data = $request->all();
 
-        //questo funziona
-        // $slug = Str::slug($data["title"]);
+        /* dump($data);
+        exit; */
 
         $newPost = new Post();
 
+        $data["coverImg"] = Storage::put("posts", $data["coverImg"]);
+        // dd($newPost->coverImg);
         $newPost->fill($data);
         $newPost->user_id = Auth::user()->id;
         $newPost->category_id = $data["category_id"];
@@ -148,17 +151,26 @@ class PostController extends Controller
     public function update(Request $request, $slug)
     {
         $post = Post::where("slug", $slug)->first();
-        /* dump($post);
-        exit; */
-        
+        $oldImage = $post->coverImg;
+
         $request->validate([
             "title" => "required|min:5",
             "content" => "required|min:5"
         ]);
-
+        
         $updatedData = $request->all();
+        
+        if($updatedData["coverImg"] !== $oldImage){
+            Storage::delete($oldImage);
+            $updatedData["coverImg"] = Storage::put("posts", $updatedData["coverImg"]);
+        }
+        /* qua dentro dovremmo salvare la immagine nella cartella public*/
+       /*  dump($updatedData["coverImg"]);
+        exit; */
+
 
         $post->update($updatedData);
+        // $post->coverImg = $newImg;
         $post->category_id = $updatedData["category_id"];
         $post->tags()->sync($updatedData["tags"]);
         $post->slug = $this->getSlug($updatedData["title"]);
