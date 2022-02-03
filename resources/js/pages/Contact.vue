@@ -2,7 +2,7 @@
   <div>
       <h1>Questa è la pagina dei contatti</h1>
       <div>
-        <form @sumbit.prevent="onSubmit()" v-if="!formSubmitted">
+        <form @submit.prevent="onSubmit()" v-if="!formSubmitted">
 
           <label class="form-group my-2" for="name">Nome</label>
           <input type="text" id="name" class="form-control" name="name" v-model="form.name">

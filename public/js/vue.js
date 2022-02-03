@@ -3222,7 +3222,7 @@ var render = function () {
             "form",
             {
               on: {
-                sumbit: function ($event) {
+                submit: function ($event) {
                   $event.preventDefault()
                   return _vm.onSubmit()
                 },
