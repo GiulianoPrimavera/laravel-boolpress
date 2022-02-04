@@ -29,7 +29,7 @@ class SendNewMail extends Mailable
      */
     public function build()
     {
-        return $this->from("example@example.com")
+        return $this->from($this->data["email"])
                     ->view('mails.sendContactMail', [
                         "data" => $this->data
                     ]);
